@@ -7,12 +7,23 @@ export const Item = styled.li`
     margin-bottom: 10px;
   }
   font-size: 12px;
+  box-shadow: 0px 1px 2px 0px rgb(234 171 243 / 70%), 1px 2px 4px 0px rgb(234 171 243 / 70%), 2px 4px 8px 0px rgb(234 171 243 / 70%), 2px 4px 16px 0px rgb(234 171 243 / 70%);
+
+ &:hover {
+    transform: scale(1.1);
+  }
+   &:focus {
+    transform: scale(1.1);
+  }
 `;
 
 export const Button = styled.button`
-  margin-left: 20px;
+  margin: auto;
   cursor: pointer;
-  font-size: 10px;
+  width: 100px;
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
 
   border-radius: 4px;
   border: 1px solid #986969;

@@ -1,5 +1,5 @@
 import { Item, Button } from './ContactItem.styled'
-
+// import { RotatingLines } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/thunk';
 
@@ -11,10 +11,10 @@ function ContactItem({ id, name, number}) {
     return (
         <Item key={id}>
             <p>
-                {name}: {number}
+                {name}: {number} {' '}
             </p>
-            <Button type="button" onClick={() => onDeleteContact(id)}>
-                Delete
+            <Button type="button" onClick={() => onDeleteContact(id)}>Delete
+               {/* {onDeleteContact && <RotatingLines width="10" />}  Delete */}
             </Button>
         </Item>
     );

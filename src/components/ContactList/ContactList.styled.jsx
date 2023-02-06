@@ -7,6 +7,11 @@ export const List = styled.ul`
   width: 360px;
 `;
 
+export const ContactItem = styled.li`
+    display: flex;
+    align-items: center;
+`;
+
 export const ContactBtn = styled.button`
   width: 60px;
   height: 30px;

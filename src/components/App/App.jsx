@@ -8,7 +8,8 @@ function App() {
   return (
       <Container>
         <Section title="Phonebook">
-          <TitleH1>Phonebook</TitleH1>
+        <TitleH1>Phonebook</TitleH1>
+        <p>You can add new contacts below:</p>
           <ContactForm />
         </Section>
         <Section title="Contacts">

@@ -2,6 +2,13 @@ import styled from '@emotion/styled'
 
 export const Container = styled.div`
   padding: 15px 30px;
+  margin: 10px auto;
+    width: 420px;
+    background: #a2a49f;
+
+    border-radius: 5px;
+    box-shadow: -1px 23px 41px -25px #000000;
+    overflow: hidden;
 `;
 
 export const Section = styled.section`
