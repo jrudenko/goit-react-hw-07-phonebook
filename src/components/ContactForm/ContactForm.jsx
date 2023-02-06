@@ -3,14 +3,34 @@ import { Form, Label, Input, Button } from './ContactForm.styled';
 import toast, { Toaster } from 'react-hot-toast';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from "../../redux/contactsSlice";
+import { addContact } from "redux/thunk";
 import { nanoid } from 'nanoid'
 
-const ContactForm = () => { 
+import { getContacts } from "redux/contactsSelectors";
+
+
+
+function ContactForm  () { 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
   const dispatch = useDispatch();
+
+  const contacts = useSelector(getContacts);
+
+  const handleSubmit = e => {
+   e.preventDefault();
+
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+
+    const normalizeName = newContact.name.toLowerCase();
+    const isNameInContact = contacts.find(newContact => newContact.name.toLowerCase() === normalizeName);
+    isNameInContact ? toast.success(`${newContact.name} is already in contacts`) : dispatch(addContact(newContact));
+    reset();
+  };
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -24,22 +44,6 @@ const ContactForm = () => {
     }
   };
 
-  const contacts = useSelector((state) => state.contacts.contacts);
-
-  const handleSubmit = e => {
-   e.preventDefault();
-
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-
-    const normalizeName = newContact.name.toLowerCase();
-    const isNameInContact = contacts.find(newContact => newContact.name.toLowerCase() === normalizeName);
-    isNameInContact ? toast.success(`${newContact.name} is already in contacts`) : dispatch(addContacts(newContact));
-    reset();
-  };
    const reset = () => {
     setName('');
     setNumber('');
